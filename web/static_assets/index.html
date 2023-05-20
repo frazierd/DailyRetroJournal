@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script type="text/javascript" src="assets/home.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+<body class="background">
+    <header class="header" id="header"></header>
+    <div class = "topnav" id="link-bar"></div>
+    <div class="card">
+        <h2>View Your Current Inventory </h2>
+
+
+        <form class="card-content" id="search-playlists-form">
+            <p class="form-field">
+                <label>Choose Status.</label>
+                <select name="cars" id="search-criteria">
+                    <option value = "AVAILABLE">Available</option>
+                    <option value = "RENTED">Currently Rented</option>
+                    <option value = "MAINTENANCE">Out for Maintenance</option>
+                </select>
+
+                <label>Choose Class.</label>
+                <select name="cars" id="search-criteria-extra">
+                    <option value = "none">View All (default)</option>
+                    <option value = "SUV">SUV</option>
+                    <option value = "TRUCK">TRUCK</option>
+                    <option value = "COMPACT">COMPACT</option>
+                    <option value = "SEDAN">SEDAN</option>
+                    <option value = "CONVERTIBLE">CONVERTIBLE</option>
+                    <option value = "VAN">VAN</option>
+                </select>
+
+            </p>
+        </form>
+
+        <p class="button-group">
+            <a href="#" class="button" id="search-btn">View</a>
+        </p>
+    </div>
+
+    <div class="card hidden" id='search-results-container'>
+        <h4>Results for <span id="search-criteria-display"></span></h4>
+        <div id="search-results-display">
+        </div>
+    </div>
+
+
+    <div class="card">
+
+        <h3>This Page Powered By:</h3>
+        <div class="logo-container">
+            <img src="https://cdn.worldvectorlogo.com/logos/java.svg" alt="Java logo" >
+            <img src="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" alt="AWS logo" />
+            <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" alt="Docker logo">
+            <img src="https://icon-library.com/images/javascript-icon-png/javascript-icon-png-23.jpg" alt="JavaScript logo" />
+            <img src="https://cdn-icons-png.flaticon.com/512/5968/5968242.png" alt="CSS logo" />
+            <img src="https://www.freeiconspng.com/thumbs/html5-icon/html5-icon-1.png" alt="HTML logo" />
+            <img src="https://static.us-east-1.prod.workshops.aws/public/cf4ca724-4157-41a7-b58a-484620d65925/static/images/lambda.png" alt="AWS Lambda logo" />
+        </div>
+    </div>
+
+</body>
+
+</html>
