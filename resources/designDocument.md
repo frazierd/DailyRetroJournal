@@ -238,7 +238,6 @@ hashtag // partition key, String
 entryId // list <String>
 userId // String
 ```
-
 # 8. Pages
 
 ![](wireframe.png)
