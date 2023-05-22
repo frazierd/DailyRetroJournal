@@ -36,10 +36,10 @@ U2. **Viewing a scrollable list of Journal Entries sorted by Date/Time:**
     - Each entry in the scrollable list is a button that can be clicked to display the full entry in the main editor pane of the page.
 
 
-U3. **Viewing a scrollable list of Journal Entries sorted by  #Hashtags:**
+U3. **Viewing a scrollable list of Journal Entries filtered by  #Hashtags:**
 
 - As a Daily Retro Journal user, I want to see a list of entries with a particular tag.
-- User selects " view all tags " button in the bottom left of the editor on the journal entry.
+- User selects " view all tags " from the " ... " button in the top left of the editor on the journal entry.
 - A list of tags is displayed in alphabetical order on the main editor pane of the page.
 - once a tag is selected by user (each tag displayed is clickable) the list of journal entries containing that tag is displayed in the left pane of the page that previously contained all the recent journal entries
 - the user can then select the entry by clicking it from the list displayed and the journal entry will be displayed in the main editor pane.
@@ -63,7 +63,7 @@ U5. **Deleting Existing Journal Entries:**
 
 STRETCH GOALS :
 
-- suggested tags (from previous tags) in the tag page
+- auto-fill (suggested) tags (from previous tags) in the tag page
 - export a journal entry
 - the ability for the editor to recognize # inside of the body of the entry.
 
@@ -98,14 +98,14 @@ Utilizes API Gateway and Lambda to create endpoints (`GetJournalEntries`, `PostJ
 
 2. `PostJournalEntry:`
 - POST /entries/create
-- Request body: Title, content, date, hashtags.
+- Request body: content, date, hashtags.
 - Response: Created entry details.
 
 3. `PutUpdateJournalEntry:`
 - PUT /entries/{entryId}
   Update an existing journal entry.
 - Path parameter: entryId.
-- Request body: Updated title, content, date, hashtags.
+- Request body: Updated content, date, hashtags.
 - Response: Journal entry details.
 
 4. `DeleteJournalEntry:`
@@ -114,23 +114,17 @@ Utilizes API Gateway and Lambda to create endpoints (`GetJournalEntries`, `PostJ
 - Path parameter: entryId.
 - Response: Success message.
 
-5. `PostHashtagToEntry:`
-- POST /entries/{entryId}/hashtags
-  Add a hashtag to a specific journal entry.
-- Path parameter: entryId (ID of the journal entry).
-- Request body: Hashtag to be added.
-- Response: Update entry details.
 
-6. `GetHashtagsToEntry`
-   -GET /hashtags
-   Retrieve a list of previously used hashtags.
-- Response: Success status code (e.g., 200 OK) response body containing an array of previously used hashtags.
+5. `GetHashtagsToUser`
+- GET /hashtags
+Retrieve a list of hashtags previously used by the user.
+- Response: Success status code (e.g., 200 OK) response body containing list of previously used hashtags (clickable) from that user's history,  that are sorted by alphabetical order.
 
 The Journal entries and collections of hashtags are stored in DynamoDB.
 
 The Daily Retro Journal provides a web interface for users to access and manage their journal entries and tagging functionality, utilizing Cognito to validate users based on the unique emailID
 
-The main page will populate a list of previous journal entry summaries (title and date) as well as a button for a new entry.
+The main page will populate a list of previous journal entry summaries (date, partial content) as well as a button for a new entry.
 It will also provide links to find and use recommended hashtags (stretch goal)
 
 
@@ -145,7 +139,6 @@ add new entry, view entries, delete entry, add hashtag, (delete hashtag?)
 ```
 // JournalEntry (model)
      String id;
-     String title;
      String content;
      ZoneDateTime dateEntered;
      Array[String] hashtag;
@@ -161,7 +154,6 @@ add new entry, view entries, delete entry, add hashtag, (delete hashtag?)
 
 ```
 // CreateJournalEntryRequest (model)
-     Sting title:
      String content;
      zoneDateTime date;
      Array[String] hashtag;
@@ -169,7 +161,7 @@ add new entry, view entries, delete entry, add hashtag, (delete hashtag?)
 ```
 // JournalEntrySummary(model)
      String id;
-     String title;
+     String content;
      zoneDateTime date;
 
 ```
@@ -181,7 +173,7 @@ add new entry, view entries, delete entry, add hashtag, (delete hashtag?)
 
 ## 6.3 ```CreateJournalEntry:```
 - Accepts a POST request to /entries/create
-- Accepts data to create a new journal entry with provided Title, Content, Date, and Hashtags
+- Accepts data to create a new journal entry with provided Content, Date, and Hashtags
 - Returns a newly generated journal entry.
 
 ## 6.4  ```UpdateJournalEntry:```
@@ -218,7 +210,6 @@ email // String
 ### 7.2. `JournalEntryTable`
 ```
 entryId // partition key, String
-title // sort key, String
 hashtags // ArrayList<String>
 content // String
 date // (localDateTime)
@@ -227,7 +218,7 @@ date // (localDateTime)
 ```
 
 entryId //  String
-title // String
+content // String
 hashtags // partition key, ArrayList<String>
 date // (localDateTime)
 
@@ -240,5 +231,5 @@ userId // String
 ```
 # 8. Pages
 
-![](wireframe.png)
+![](capstone/resources/wireframe.png)
 
