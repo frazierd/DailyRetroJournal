@@ -231,5 +231,5 @@ userId // String
 ```
 # 8. Pages
 
-![wireframe.png](wireframes/wireframe.png)
+![wireframe2.jpeg](wireframes/wireframe2.jpeg)
 
