@@ -231,5 +231,5 @@ userId // String
 ```
 # 8. Pages
 
-![](capstone/resources/wireframe.png)
+![wireframe](wireframe.png)
 
