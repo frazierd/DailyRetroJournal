@@ -22,10 +22,13 @@ public class GetJournalEntryActivity {
     }
 
     public GetJournalEntryResult handleRequest (final GetJournalEntryRequest getJournalEntryRequest) {
-        log.info("Recieved GetJournalEntryRequest {}", getJournalEntryRequest);
+//        log.fatal("Recieved GetJournalEntryRequest {}", getJournalEntryRequest);
         String requestedId = getJournalEntryRequest.getId();
+//        log.fatal("Got GetJournalEntryRequest {}", requestedId);
         JournalEntry journalEntry = journalEntryDao.getJournalEntry(requestedId);
+//        log.fatal("Got JournalEntry{}", journalEntry);
         JournalEntryModel journalEntryModel = new ModelConverter().toJournalEntryModel(journalEntry);
+//        log.fatal("Got JournalEntryModel {}", journalEntryModel);
 
         return GetJournalEntryResult.builder()
                 .withJournalEntry(journalEntryModel)

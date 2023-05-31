@@ -2,35 +2,36 @@ package dailyretrojournal.models;
 
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class JournalEntryModel {
 
-    private String id;
+    private String entryId;
     private String content;
-    private ZonedDateTime dateEntered;
-    private ArrayList<String> hashtag;
+    private String dateEntered;
+    private List<String> hashtag;
 
-    public JournalEntryModel(String id, String content, ZonedDateTime dateEntered, ArrayList<String> hashtag) {
-        this.id = id;
+    public JournalEntryModel(String entryId, String content, String dateEntered, List<String> hashtag) {
+        this.entryId = entryId;
         this.content = content;
         this.dateEntered = dateEntered;
         this.hashtag = hashtag;
     }
 
     public String getId() {
-        return id;
+        return entryId;
     }
 
     public String getContent() {
         return content;
     }
 
-    public ZonedDateTime getDateEntered() {
+    public String getDateEntered() {
         return dateEntered;
     }
 
-    public ArrayList<String> getHashtag() {
+    public List<String> getHashtag() {
         return hashtag;
     }
 
@@ -53,13 +54,13 @@ public class JournalEntryModel {
 
     public static class Builder {
 
-        private String id;
+        private String entryId;
         private String content;
-        private ZonedDateTime dateEntered;
-        private ArrayList<String> hashtag;
+        private String dateEntered;
+        private List<String> hashtag;
 
-        public Builder withId(String id) {
-            this.id = id;
+        public Builder withId(String entryId) {
+            this.entryId = entryId;
             return this;
         }
 
@@ -68,18 +69,18 @@ public class JournalEntryModel {
             return this;
         }
 
-        public Builder withDateEntered(ZonedDateTime dateEntered) {
+        public Builder withDateEntered(String dateEntered) {
             this.dateEntered = dateEntered;
             return this;
         }
 
-        public Builder withHashtag(ArrayList<String> hashtag) {
+        public Builder withHashtag(List<String> hashtag) {
             this.hashtag = hashtag;
             return this;
         }
 
         public JournalEntryModel build() {
-            return new JournalEntryModel(id, content, dateEntered, hashtag);
+            return new JournalEntryModel(entryId, content, dateEntered, hashtag);
         }
     }
 }

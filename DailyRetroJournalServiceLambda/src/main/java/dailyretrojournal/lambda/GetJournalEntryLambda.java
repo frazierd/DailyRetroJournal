@@ -10,12 +10,18 @@ import org.apache.logging.log4j.Logger;
 public class GetJournalEntryLambda extends LambdaActivityRunner<GetJournalEntryRequest, GetJournalEntryResult>
         implements RequestHandler<AuthenticatedLambdaRequest<GetJournalEntryRequest>, LambdaResponse>{
 
+    private final Logger log = LogManager.getLogger();
+
     public LambdaResponse handleRequest(AuthenticatedLambdaRequest<GetJournalEntryRequest> input, Context context) {
+        log.fatal("Handle request");
         return super.runActivity(
                 () -> input.fromPath(path ->
-                        GetJournalEntryRequest.builder()
-                                .withId(path.get("id"))
-                                .build()),
+                {
+                    log.fatal("Get journal entry id" + path.get("entryId"));
+                    return GetJournalEntryRequest.builder()
+                                .withId(path.get("entryId"))
+                                .build();}
+                ),
                 (request,serviceComponent)->
                         serviceComponent.provideGetJournalEntryActivity().handleRequest(request));
     }

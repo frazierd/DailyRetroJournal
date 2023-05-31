@@ -168,32 +168,35 @@ add new entry, view entries, delete entry, add hashtag, (delete hashtag?)
 ## 6.2.```RetrieveAllJournalEntry:```
 
 - Accepts a GET request to /entries/all
-- Accepts a entryId and returns a specific journal entry.
-    - If the journal entry for the specified entryId is not found then returns a JournalEntryForIDNotfound exception (400 exception).
 
-## 6.3 ```CreateJournalEntry:```
+## 6.3.```RetrieveJournalEntryById:```
+- Accepts a GET request to /entries/all
+- Accepts a entryId and returns a specific journal entry.
+  - If the journal entry for the specified entryId is not found then returns a JournalEntryForIDNotfound exception (400 exception).
+
+## 6.4 ```CreateJournalEntry:```
 - Accepts a POST request to /entries/create
 - Accepts data to create a new journal entry with provided Content, Date, and Hashtags
 - Returns a newly generated journal entry.
 
-## 6.4  ```UpdateJournalEntry:```
+## 6.5  ```UpdateJournalEntry:```
 - Accepts a PUT request to /entries/{entryId}
 - Accepts entryId to update the journal entry.
 - If the journal entry for the specified entryId is not found then returns a JournalEntryForIDNotfound exception (400 exception).
 
 
-## 6.5 ```DeleteJournalEntry:```
+## 6.6 ```DeleteJournalEntry:```
 - Accepts a DELETE request to /entries/{entryId}
 - Deletes a specific journal entry by its ID.
 - Returns a success message confirming the deletion.
 
-## 6.6 ```AddHashtagToEntry:```
+## 6.7 ```AddHashtagToEntry:```
 - Accepts a POST request to /entries/{entryId}/hashtags
 - Accepts a valid hashtag to be added to entry with valid entryId
 - Response: Details of the updated journal entry with the added hashtag.
     - If the journal entry for the specified entryId is not found then returns a JournalEntryForIDNotfound exception (400 exception).
 
-## 6.7 ```GetPreviouslyUsedHashtags```
+## 6.8 ```GetPreviouslyUsedHashtags```
 - Accepts a GET request to /hashtags
 - Retrieves an ArrayList of previously used hashtages
 

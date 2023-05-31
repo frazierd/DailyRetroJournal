@@ -21,6 +21,7 @@ public class ModelConverter {
                 .withId(journalEntry.getId())
                 .withContent(journalEntry.getContent())
                 .withDateEntered(journalEntry.getDateEntered())
+                .withHashtag(journalEntry.getHashtag())
                 .build();
     }
     /**

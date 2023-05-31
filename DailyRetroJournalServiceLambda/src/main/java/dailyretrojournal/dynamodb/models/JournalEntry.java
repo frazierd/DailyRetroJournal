@@ -5,26 +5,26 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 
-import java.time.ZonedDateTime;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @DynamoDBTable(tableName = "journalEntryTable")
 public class JournalEntry {
 
-    private String id;
+    private String entryId;
     private String content;
-    private ZonedDateTime dateEntered;
-    private ArrayList<String> hashtag;
+    private String dateEntered;
+    private List<String> hashtag;
 
     @DynamoDBHashKey(attributeName = "id")
     public String getId() {
-        return id;
+        return entryId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setId(String entryId) {
+        this.entryId = entryId;
     }
+
     @DynamoDBAttribute(attributeName = "content")
     public String getContent() {
         return content;
@@ -33,27 +33,29 @@ public class JournalEntry {
     public void setContent(String content) {
         this.content = content;
     }
+
     @DynamoDBAttribute(attributeName = "date")
-    public ZonedDateTime getDateEntered() {
+    public String getDateEntered() {
         return dateEntered;
     }
 
-    public void setDateEntered(ZonedDateTime dateEntered) {
+    public void setDateEntered(String dateEntered) {
         this.dateEntered = dateEntered;
     }
+
     @DynamoDBAttribute(attributeName = "hashtag")
-    public ArrayList<String> getHashtag() {
+    public List<String> getHashtag() {
         return hashtag;
     }
 
-    public void setHashtag(ArrayList<String> hashtag) {
+    public void setHashtag(List<String> hashtag) {
         this.hashtag = hashtag;
     }
 
     @Override
     public String toString() {
         return "JournalEntry{" +
-                "id='" + id + '\'' +
+                "id='" + entryId + '\'' +
                 ", content='" + content + '\'' +
                 ", dateEntered=" + dateEntered +
                 ", hashtag=" + hashtag +

@@ -2,6 +2,7 @@ package dailyretrojournal.dependency;
 
 
 import dagger.Component;
+import dailyretrojournal.activity.GetAllJournalEntriesActivity;
 import dailyretrojournal.activity.GetJournalEntryActivity;
 
 import javax.inject.Singleton;
@@ -14,6 +15,8 @@ import javax.inject.Singleton;
 public interface ServiceComponent {
 
     GetJournalEntryActivity provideGetJournalEntryActivity();
+
+    GetAllJournalEntriesActivity provideGetAllJournalEntriesActivity();
 
     /**
      * Provides the relevant activity.
