@@ -13,8 +13,10 @@
             "S": "2023-05-23T10:30:00+02:00"
           },
           "hashtag": {
-            "SS": [
-              "feels"
+            "L": [
+              {
+                "S": "feels"
+              }
             ]
           }
         }
@@ -33,9 +35,11 @@
             "S": "2023-05-24T10:30:00+03:00"
           },
           "hashtag": {
-            "SS": [
-              "feels",
-              "doingwork"
+            "L": [{
+              "S": "feels"
+            },{
+              "S": "doingwork"
+            }
             ]
           }
         }
@@ -54,8 +58,10 @@
             "S": "2023-05-22T10:30:00+02:00"
           },
           "hashtag": {
-            "SS": [
-              "feels"
+            "L": [
+              {
+                "S": "feels"
+              }
             ]
           }
         }
@@ -74,9 +80,11 @@
             "S": "2023-05-21T10:30:00+02:00"
           },
           "hashtag": {
-            "SS": [
-              "feels",
-              "lookmommyiamdoingit"
+            "L": [{
+              "S": "feels"
+            },{
+              "S": "lookmommyiamdoingit"
+            }
             ]
           }
         }

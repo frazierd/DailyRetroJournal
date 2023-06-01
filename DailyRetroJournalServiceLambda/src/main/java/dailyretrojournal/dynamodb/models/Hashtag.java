@@ -7,11 +7,11 @@ import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
 import java.time.ZonedDateTime;
 import java.util.Objects;
 
-@DynamoDBTable(tableName = "hashtagTable")
+@DynamoDBTable(tableName = "c")
 public class Hashtag {
 
     private String hashtag;
-    private ZonedDateTime createdAt;
+    private String createdAt;
 
     @DynamoDBHashKey(attributeName = "hashtag")
     public String getHashtag() {
@@ -22,11 +22,11 @@ public class Hashtag {
         this.hashtag = hashtag;
     }
     @DynamoDBAttribute (attributeName = "timeCreated")
-    public ZonedDateTime getCreatedAt() {
+    public String getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(ZonedDateTime createdAt) {
+    public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
     }
 

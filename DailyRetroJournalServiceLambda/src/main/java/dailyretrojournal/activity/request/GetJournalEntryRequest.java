@@ -7,8 +7,8 @@ import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 public class GetJournalEntryRequest {
     private final String entryId;
 
-    public GetJournalEntryRequest(String id) {
-        this.entryId = id;
+    public GetJournalEntryRequest(String entryId) {
+        this.entryId = entryId;
     }
 
     public String getId() {
@@ -27,8 +27,8 @@ public class GetJournalEntryRequest {
 
         private String entryId;
 
-        public Builder withId(String id) {
-            this.entryId = id;
+        public Builder withId(String entryId) {
+            this.entryId = entryId;
             return this;
         }
 

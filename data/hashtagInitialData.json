@@ -1,0 +1,64 @@
+{
+  "hashtagTable": [
+    {
+      "PutRequest": {
+        "Item": {
+          "hashtag": {
+            "S":   [
+              "doingwork"
+            ]
+          },
+          "createdAt": {
+            "S": "03/23/2023"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "hashtag": {
+            "S":   [
+              "feels",
+              "lookmommyiamdoingit"
+            ]
+          },
+          "createdAt": {
+            "S": "03/23/2023"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "hashtag": {
+            "S":  [
+              "feels"
+            ]
+          },
+          "createdAt": {
+            "S": "03/23/2023"
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "hashtag": {
+            "S":  [
+              "feels",
+              "doingwork"
+            ]
+
+          },
+          "createdAt": {
+            "S": "03/23/2023"
+          }
+        }
+      }
+
+    }
+  ]
+}
