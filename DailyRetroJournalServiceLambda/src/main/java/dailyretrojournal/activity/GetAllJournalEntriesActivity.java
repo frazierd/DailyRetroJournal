@@ -2,10 +2,11 @@ package dailyretrojournal.activity;
 
 import dailyretrojournal.activity.request.GetJournalAllEntriesRequest;
 import dailyretrojournal.activity.result.GetAllJournalEntriesResult;
-import dailyretrojournal.converters.ModelConverter;
+
 import dailyretrojournal.dynamodb.JournalEntryDao;
 import dailyretrojournal.dynamodb.models.JournalEntry;
-import dailyretrojournal.models.JournalEntryModel;
+
+import dailyretrojournal.exceptions.JournalEntryNotFoundException;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -24,6 +25,9 @@ public class GetAllJournalEntriesActivity {
 
     public GetAllJournalEntriesResult handleRequest () {
         List<JournalEntry> journalEntry = journalEntryDao.getAllJournalEntries();
+//        if (journalEntry.isEmpty()) {
+//            throw new JournalEntryNotFoundException();
+//        }
         log.fatal("this is GetAllJournalEntriesResult handle request {}" + journalEntry);
         return GetAllJournalEntriesResult.builder()
                 .withAllJournalEntriesList(journalEntry)
