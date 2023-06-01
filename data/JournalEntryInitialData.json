@@ -1,0 +1,86 @@
+{
+  "journalEntryTable": [
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "007"
+          },
+          "content": {
+            "S": "this is my journal entry... I am feeling my feels"
+          },
+          "dateEntered": {
+            "S": "2023-05-23T10:30:00+02:00"
+          },
+          "hashtag": {
+            "SS": [
+              "feels"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "001"
+          },
+          "content": {
+            "S": "this is my other journal entry of the things I did today"
+          },
+          "dateEntered": {
+            "S": "2023-05-24T10:30:00+03:00"
+          },
+          "hashtag": {
+            "SS": [
+              "feels",
+              "doingwork"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "004"
+          },
+          "content": {
+            "S": "what am I doing in the world?"
+          },
+          "dateEntered": {
+            "S": "2023-05-22T10:30:00+02:00"
+          },
+          "hashtag": {
+            "SS": [
+              "feels"
+            ]
+          }
+        }
+      }
+    },
+    {
+      "PutRequest": {
+        "Item": {
+          "id": {
+            "S": "017"
+          },
+          "content": {
+            "S": "I think I am getting the hang of this"
+          },
+          "dateEntered": {
+            "S": "2023-05-21T10:30:00+02:00"
+          },
+          "hashtag": {
+            "SS": [
+              "feels",
+              "lookmommyiamdoingit"
+            ]
+          }
+        }
+      }
+    }
+  ]
+}
