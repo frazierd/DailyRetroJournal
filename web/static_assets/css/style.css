@@ -13,7 +13,7 @@
     background-color: var(--background-color);
     margin: 0;
     counter-reset: section;
-    font-family: "Helvetica Neue",Helvetica,sans-serif;
+    font-family: "Arial", sans-serif;
 }
 
 .header {
@@ -54,7 +54,7 @@
     height: 100px;
     text-decoration: none;
     color: var(--secondary-color);
-    font-family: "Impact", fantasy;
+    font-family: "Arial", sans-serif;
 }
 
 .card {
@@ -84,7 +84,7 @@
 .logo-container img {
   width: 100px;
   height: 100px;
-  font-family: "Impact", fantasy;
+  font-family: "Arial", sans-serif;
 }
 
 .gif-image {
