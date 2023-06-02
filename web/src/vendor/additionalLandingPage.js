@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Make an HTTP request to your AWS endpoint
-fetch('https://your-aws-endpoint-url/entries/all')
+fetch('http://127.0.0.1:3000/entries/all')
   .then(response => response.json())
   .then(data => {
     // Process the data and generate the sidebar entries
