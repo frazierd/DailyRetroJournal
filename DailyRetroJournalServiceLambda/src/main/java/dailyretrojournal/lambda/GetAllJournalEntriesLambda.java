@@ -3,7 +3,7 @@ package dailyretrojournal.lambda;
 import com.amazonaws.services.lambda.runtime.Context;
 import com.amazonaws.services.lambda.runtime.RequestHandler;
 import dailyretrojournal.activity.request.GetJournalAllEntriesRequest;
-import dailyretrojournal.activity.request.GetJournalEntryRequest;
+
 import dailyretrojournal.activity.result.GetAllJournalEntriesResult;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
