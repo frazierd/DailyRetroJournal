@@ -31,7 +31,9 @@ module.exports = {
     manageInventory: path.resolve(__dirname, 'src', 'pages', 'manageInventory.js'),
     viewCar: path.resolve(__dirname, 'src', 'pages', 'viewCar.js'),
     removeCar: path.resolve(__dirname, 'src', 'pages', 'removeCar.js'),
-    updateCar: path.resolve(__dirname, 'src', 'pages', 'updateCar.js')
+    updateCar: path.resolve(__dirname, 'src', 'pages', 'updateCar.js'),
+    viewAllJournalEntries: path.resolve(__dirname, 'src', 'pages', 'viewAllJournalEntries.js'),
+    additionalLandingPage: path.resolve(__dirname, 'src', 'vendor', 'additionalLandingPage.js')
 
 
   },
