@@ -1,5 +1,5 @@
 import RetroJournalClient from '../api/retroJournalClient';
-import PlaylistClient from '../api/musicPlaylistClient';
+import PlaylistClient from '../api/musicPlaylistClient'; // had to bring in this file because it has the logic for cognito user to be signed in
 import Header from '../components/header';
 import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
@@ -45,7 +45,7 @@ class ViewAllJournalEntries extends BindingClass {
         this.su
       }
 
-    async readDataStoreAddJournalEntryToSummary() {
+    async readDataStoreAddJournalEntryToSummary() { //made this a very descriptive name about how it is reading
         let journalEntries = this.dataStore.get('journal');
         // Get the journal entry summary container
         const summaryContainer = document.getElementById('journal-entry-summary');
