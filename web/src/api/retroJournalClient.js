@@ -71,7 +71,8 @@ import Authenticator from "./authenticator";
         async getAllJournalEntries(errorCallback) {
            try {
                const response = await this.axiosClient.get(`entries/all`);
-               return response.data.journalEntries;
+               console.log(JSON.stringify(response, null, 4) + "endpoint response");
+               return response.data.allJournalEntriesList;
            } catch (error) {
                this.handleError(error, errorCallback)
                return []; // Return an empty array in case of error

@@ -1,7 +1,9 @@
-import DailyRetroJournalClient from '../api/DailyRetroJournalClient';
+import RetroJournalClient from '../api/retroJournalClient';
+import PlaylistClient from '../api/musicPlaylistClient';
 import Header from '../components/header';
 import BindingClass from "../util/bindingClass";
 import DataStore from "../util/DataStore";
+
 
 /**
  * Logic needed for the view journal entry summary section of the website.
@@ -13,33 +15,40 @@ class ViewAllJournalEntries extends BindingClass {
     const methodsToBind = [
       'clientLoaded',
       'mount',
-      'fetchJournalEntriesToSummary'
+      'readDataStoreAddJournalEntryToSummary'
     ];
     this.bindClassMethods(methodsToBind, this);
     this.dataStore = new DataStore();
-    this.dataStore.addChangeListener(this.fetchJournalEntriesToSummary);
+    this.dataStore.addChangeListener(this.readDataStoreAddJournalEntryToSummary);
     this.header = new Header(this.dataStore);
   }
 
     async clientLoaded() {
         const identity = await this.client.getIdentity();
-        const profile = await this.client.getProfile(identity.email);
+        if (identity == undefined) {
+            this.clientPlaylist.login();
+             }
+        console.log(identity + "this is letting you know what is going on with your identity");
         const journalEntries = await this.client.getAllJournalEntries();
+        this.dataStore.set('journal', journalEntries);
+        console.log (journalEntries + "these are suppose to be your journal entries");
         this.dataStore.set('email', identity.email);
-        this.dataStore.set('profile', profile);
-        this.fetchJournalEntriesToSummary();
       }
+
 
     mount() {
-        // Get the journal entry summary container element
-        const summaryContainer = document.getElementById('journal-entry-summary');
 
         // Fetch the journal entries
-        this.fetchJournalEntriesToSummary();
+        this.client = new RetroJournalClient();
+        this.clientPlaylist = new PlaylistClient();
+        this.clientLoaded();
+        this.su
       }
 
-    async fetchJournalEntriesToSummary() {
-        const journalEntries = await this.client.getAllJournalEntries();
+    async readDataStoreAddJournalEntryToSummary() {
+        let journalEntries = this.dataStore.get('journal');
+        // Get the journal entry summary container
+        const summaryContainer = document.getElementById('journal-entry-summary');
 
       // Loop through the entries and create the HTML elements
         journalEntries.forEach((entry) => {
