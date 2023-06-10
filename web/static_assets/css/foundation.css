@@ -24,6 +24,67 @@
   font-size: 1.5rem;
   font-weight: bold;
 }
+.journal-entry-button {
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.journal-entry-button:hover {
+  background-color: #e0e0e0;
+}
+
+.journal-entry-date {
+  font-weight: bold;
+  color: #333;
+  margin-right: 10px;
+}
+
+.journal-entry-content {
+  color: #333;
+}
+
+.hashtag {
+  color: blue;
+  cursor: pointer;
+}
+
+.date-box {
+  width: 80px;
+  height: 80px;
+  background-color: #bdbdbd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.month {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.day {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.year {
+  font-size: 14px;
+}
+
+.entry-content {
+  flex-grow: 1;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
 
 #new-entry-button:hover {
   transform: translate(1px, 1px);

@@ -1,127 +1,112 @@
 <!DOCTYPE html>
-<html>
-<!--THIS IS THE LANDING PAGE-->
+    <html>
+    <!--THIS IS THE LANDING PAGE-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Daily Retro Journal</title>
         <link rel="stylesheet" href="css/foundation.css">
-        <link rel="stylesheet" href="css/app.css">
-        <script src="vendor/foundation.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+<!--        <script src="assets/additionalLandingPage.js"></script>-->
+        <script src="assets/viewAllJournalEntries.js"></script>
     </head>
+
     <body>
-
-    <div class="grid-y medium-grid-frame">
-        <div class="cell shrink header medium-cell-block-container">
-            <h1>DAILY RETRO JOURNAL</h1>
-            <div class="grid-x grid-padding-x">
-
-<!--                <div class="cell medium-4 medium-cell-block">-->
-<!--                    <p style="width:80vw;">A medium 4 cell block... on medium this content should overflow and let you horizontally scroll across... one might use this for an array of options</p>-->
-<!--                </div>-->
-<!--                <div class="cell medium-4">-->
-<!--                    A medium 4 cell-->
-<!--                </div>-->
-            </div>
-        </div>
-        <div class="cell medium-auto medium-cell-block-container">
-            <div class="grid-x grid-padding-x">
-                <div class="cell medium-4 medium-cell-block-y">
-                    <h2>Journal entry summary model</h2>
-                    <p> this is where my calendar representation is going </p>
-
-                    <p>
-                    <div class="info">
-                    <!--
-                        Note: The date should be formatted exactly as it's shown below. In particular, the
-                        "least significant" characters of the month should be encapsulated in a <span>
-                        element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").
-                        Oh, and if you don't need a date for a particular page or post you can simply delete
-                        the entire "date" element.
-
-                    -->
-                    <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">14</span><span class="year">, 2014</span></span></p>
-                    </div>
-                    <p>
-                    <div class="info">
-                    <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">8</span><span class="year">, 2014</span></span></p>
-                    </div>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
-                    <p>Date: Today I began learning about .... #api</p>
+        <div class="grid-y medium-grid-frame">
+            <div class="cell shrink header medium-cell-block-container">
+                <h1>DAILY RETRO JOURNAL</h1>
+                <div class="grid-x grid-padding-x">
                 </div>
+            </div>
+                    <!-- This is where the summary sidebar starts -->
+            <div class="cell medium-auto medium-cell-block-container">
+                <div class="grid-x grid-padding-x">
+                    <div class="cell medium-4 medium-cell-block-y" id="journal-entry-summary">
+                        <h2>Journal entry summary</h2>
+                        <table>
+                            <tbody id="journalSummary"></tbody>
+                        </table>
+<!--                            <p>-->
+<!--                                <div class="journal-entry-button">-->
+<!--                                    <div class="date-box">-->
+<!--                                        <span class="month">Jul</span>-->
+<!--                                        <span class="day">14</span>-->
+<!--                                        <span class="year">, 2023</span>-->
+<!--                                    </div>-->
+<!--                                    <div class="entry-content">-->
+<!--                                        Today I fixed what I had thought I learned #APIs and #WebDevelopment....-->
+<!--                                    </div>-->
+<!--                                </div>-->
+<!--                            </p>-->
+<!--                            <p>-->
+<!--                            <div class="journal-entry-button">-->
+<!--                                <div class="date-box">-->
+<!--                                    <span class="month">Jul</span>-->
+<!--                                    <span class="day">12</span>-->
+<!--                                    <span class="year">, 2023</span>-->
+<!--                                </div>-->
+<!--                                <div class="entry-content">-->
+<!--                                    Today I continued learning...-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            </p>-->
+<!--                            <p>-->
+<!--                            <div class="journal-entry-button">-->
+<!--                                <div class="date-box">-->
+<!--                                    <span class="month">Jul</span>-->
+<!--                                    <span class="day">11</span>-->
+<!--                                    <span class="year">, 2023</span>-->
+<!--                                </div>-->
+<!--                                <div class="entry-content">-->
+<!--                                    Today I began learning #APIs and #WebDevelopment....-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            </p>-->
+<!--                            <p>-->
+<!--                            <div class="journal-entry-button">-->
+<!--                                <div class="date-box">-->
+<!--                                    <span class="month">Jul</span>-->
+<!--                                    <span class="day">8</span>-->
+<!--                                    <span class="year">, 2023</span>-->
+<!--                                </div>-->
+<!--                                <div class="entry-content">-->
+<!--                                    Today I stared blankly into the screen...-->
+<!--                                </div>-->
+<!--                            </div>-->
+<!--                            </p>-->
+                        <p> this is where my calendar representation is going (stretch goal)</p>
+
+                    </div>
+                    <!-- this the text editor-->
                     <div class="cell medium-8 medium-cell-block-y">
                         <div class="cell medium-4">
                             <button id="new-entry-button">+</button>
                         </div>
-                        <h2>Create Journal Entry</h2>
-                        <textarea id="journal-entry" rows="10" placeholder="Write your journal entry here"></textarea>
+                        <textarea id="journal-entry" rows="25" placeholder="Write your journal entry here"></textarea>
                     </div>
                 </div>
             </div>
         </div>
-    <script>
-    // Auto-save functionality
-    const journalEntry = document.getElementById('journal-entry');
 
-    journalEntry.addEventListener('input', () => {
-      const entryContent = journalEntry.value;
-      localStorage.setItem('journalEntry', entryContent);
-    });
+        <script>
+        // Auto-save functionality
+        const journalEntry = document.getElementById('journal-entry');
 
-    // Retrieve saved entry on page load
-    const savedEntry = localStorage.getItem('journalEntry');
-    if (savedEntry) {
-      journalEntry.value = savedEntry;
-    }
-  </script>
-<!--        <div class="cell shrink footer">-->
-<!--            <h3>Here's my footer</h3>-->
-<!--        </div>-->
-    </div>
+        journalEntry.addEventListener('input', () => {
+          const entryContent = journalEntry.value;
+          localStorage.setItem('journalEntry', entryContent);
+        });
+
+        // Retrieve saved entry on page load
+        const savedEntry = localStorage.getItem('journalEntry');
+        if (savedEntry) {
+          journalEntry.value = savedEntry;
+        }
+        </script>
+    <!--        <div class="cell shrink footer">-->
+    <!--            <h3>Here's my footer</h3>-->
+    <!--        </div>-->
     </body>
 
 </html>
-
-<!--<div class="info">-->
-<!--    &lt;!&ndash;-->
-<!--        Note: The date should be formatted exactly as it's shown below. In particular, the-->
-<!--        "least significant" characters of the month should be encapsulated in a <span>-->
-<!--        element to denote what gets dropped in 1200px mode (eg. the "uary" in "January").-->
-<!--        Oh, and if you don't need a date for a particular page or post you can simply delete-->
-<!--        the entire "date" element.-->
-
-<!--    &ndash;&gt;-->
-<!--    <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">14</span><span class="year">, 2014</span></span>-->
-<!--    &lt;!&ndash;-->
-<!--        Note: You can change the number of list items in "stats" to whatever you want.-->
-<!--    &ndash;&gt;-->
-<!--    <ul class="stats">-->
-<!--        <li><a href="#" class="icon fa-comment">16</a></li>-->
-<!--        <li><a href="#" class="icon fa-heart">32</a></li>-->
-<!--        <li><a href="#" class="icon brands fa-twitter">64</a></li>-->
-<!--        <li><a href="#" class="icon brands fa-facebook-f">128</a></li>-->
-<!--    </ul>-->
-<!--</div>-->
-
-<!--<div class="info">-->
-<!--    <span class="date"><span class="month">Jul<span>y</span></span> <span class="day">8</span><span class="year">, 2014</span></span>-->
-<!--    <ul class="stats">-->
-<!--        <li><a href="#" class="icon fa-comment">16</a></li>-->
-<!--        <li><a href="#" class="icon fa-heart">32</a></li>-->
-<!--        <li><a href="#" class="icon brands fa-twitter">64</a></li>-->
-<!--        <li><a href="#" class="icon brands fa-facebook-f">128</a></li>-->
-<!--    </ul>-->
-<!--</div>-->
