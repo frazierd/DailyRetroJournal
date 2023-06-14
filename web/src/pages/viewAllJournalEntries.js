@@ -42,7 +42,7 @@ class ViewAllJournalEntries extends BindingClass {
         this.client = new RetroJournalClient();
         this.clientPlaylist = new PlaylistClient();
         this.clientLoaded();
-        this.su
+
       }
 
     async readDataStoreAddJournalEntryToSummary() { //made this a very descriptive name about how it is reading
@@ -51,17 +51,36 @@ class ViewAllJournalEntries extends BindingClass {
         const summaryContainer = document.getElementById('journal-entry-summary');
 
       // Loop through the entries and create the HTML elements
-        journalEntries.forEach((entry) => {
+        journalEntries.forEach((entryObj) => {
+        const entry = entryObj.PutRequest.Item;
+
       // Create the container div for each entry
         const entryContainer = document.createElement('div');
-        entryContainer.classList.add('journal-entry-button');
+        entryContainer.classList.add('journal-entry-button'); //eventually this will be the button that calls the GET journal entry but {entryID}
 
             // Create the date box
           const dateBox = document.createElement('div');
           dateBox.classList.add('date-box');
-          dateBox.innerHTML = `<span class="month">${entry.month}</span>
-                               <span class="day">${entry.day}</span>
-                               <span class="year">${entry.year}</span>`;
+          console.log(dateBox + "this is the datebox created");
+
+          //Get the date from the entry
+          const epochTime = Date.parseInt(entry.dateEntered.S, 10);
+
+          //convert epoch to date object
+         const entryDate= new Date(epochTime);
+         console.log(entryDate + "this should be converting to a new date");
+
+          // Create the entry content
+          const month = entryDate.getMonth() + 1;
+          const day = entryDate.getDate();
+          const year = entryDate.getFullYear();
+          console.log(month, day, year + "this should convert epoch to date");
+
+
+          // Set the inner HTML of the date box
+          dateBox.innerHTML = `<span class="month">${month}</span>
+                               <span class="day">${day}</span>
+                               <span class="year">${year}</span>`;
 
           // Create the entry content
           const entryContent = document.createElement('div');
@@ -72,6 +91,8 @@ class ViewAllJournalEntries extends BindingClass {
           // Append the date box and entry content to the entry container
           entryContainer.appendChild(dateBox);
           entryContainer.appendChild(entryContent);
+
+          console.log(entryContainer);
 
           // Append the entry container to the summary container
           summaryContainer.appendChild(entryContainer);
