@@ -9,9 +9,6 @@ public class GetJournalAllEntriesRequest {
 
     public GetJournalAllEntriesRequest() {
     }
-
-
-
     @JsonPOJOBuilder
     public static class Builder {
 

@@ -36,7 +36,6 @@ public class JournalEntry {
         this.content = content;
     }
 
-    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @DynamoDBAttribute(attributeName = "date")
     public String getDateEntered() {
         return dateEntered;
