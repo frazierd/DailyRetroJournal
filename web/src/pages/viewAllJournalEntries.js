@@ -52,7 +52,8 @@ class ViewAllJournalEntries extends BindingClass {
 
       // Loop through the entries and create the HTML elements
         journalEntries.forEach((entryObj) => {
-        const entry = entryObj.PutRequest.Item;
+        console.log(JSON.stringify(entryObj) + " this is the entryObject LOOK FOR THE ALL CAPS");
+//        const entry = entryObj.PutRequest.Item;
 
       // Create the container div for each entry
         const entryContainer = document.createElement('div');
@@ -64,7 +65,7 @@ class ViewAllJournalEntries extends BindingClass {
           console.log(dateBox + "this is the datebox created");
 
           //Get the date from the entry
-          const epochTime = Date.parseInt(entry.dateEntered.S, 10);
+          const epochTime = parseInt(entryObj.dateEntered, 10);
 
           //convert epoch to date object
          const entryDate= new Date(epochTime);
@@ -85,7 +86,7 @@ class ViewAllJournalEntries extends BindingClass {
           // Create the entry content
           const entryContent = document.createElement('div');
           entryContent.classList.add('entry-content');
-          const previewContent = entry.content.substring(0, 20); // Get the first 20 characters
+          const previewContent = entryObj.content.substring(0, 20); // Get the first 20 characters
           entryContent.textContent = previewContent;
 
           // Append the date box and entry content to the entry container
