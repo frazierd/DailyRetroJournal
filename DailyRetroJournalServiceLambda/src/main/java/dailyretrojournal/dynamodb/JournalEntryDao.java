@@ -24,7 +24,9 @@ public class JournalEntryDao {
         DynamoDBScanExpression entryScanner = new DynamoDBScanExpression();
         log.fatal("this shows that entryScanner works{}" + entryScanner);
         List<JournalEntry> entryScanResult = mapper.scan(JournalEntry.class, entryScanner);
-        log.fatal("this shows that the mapper.scan is working{}" + entryScanResult);
+        for (JournalEntry entry : entryScanResult) {
+            log.fatal("entryScanResult {}", entry.toString());
+        }
         return entryScanResult;
     }
 
