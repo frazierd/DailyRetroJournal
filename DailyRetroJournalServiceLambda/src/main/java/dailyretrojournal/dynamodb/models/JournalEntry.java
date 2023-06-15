@@ -4,6 +4,8 @@ package dailyretrojournal.dynamodb.models;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBAttribute;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBHashKey;
 import com.amazonaws.services.dynamodbv2.datamodeling.DynamoDBTable;
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 
 import java.util.List;
 import java.util.Objects;
@@ -34,6 +36,7 @@ public class JournalEntry {
         this.content = content;
     }
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING)
     @DynamoDBAttribute(attributeName = "date")
     public String getDateEntered() {
         return dateEntered;

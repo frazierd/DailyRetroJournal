@@ -35,7 +35,7 @@ public class MetricsPublisher {
     }
 
     /**
-     * Publishes a count to CloudWatch.
+     * Publishes count to CloudWatch.
      *
      * @param metricName name of metric to publish.
      * @param value value of metric (in milliseconds).

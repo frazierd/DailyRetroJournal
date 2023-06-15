@@ -10,7 +10,7 @@
             "S": "this is my journal entry... I am feeling my feels"
           },
           "dateEntered": {
-            "S": "2023-05-23T10:30:00+02:00"
+            "S": "1685638037"
           },
           "hashtag": {
             "L": [
@@ -32,7 +32,7 @@
             "S": "this is my other journal entry of the things I did today"
           },
           "dateEntered": {
-            "S": "2023-05-24T10:30:00+03:00"
+            "S": "1681490837"
           },
           "hashtag": {
             "L": [{
@@ -55,7 +55,7 @@
             "S": "what am I doing in the world?"
           },
           "dateEntered": {
-            "S": "2023-05-22T10:30:00+02:00"
+            "S": "1684947017"
           },
           "hashtag": {
             "L": [
@@ -77,7 +77,7 @@
             "S": "I think I am getting the hang of this"
           },
           "dateEntered": {
-            "S": "2023-05-21T10:30:00+02:00"
+            "S": "1686761237"
           },
           "hashtag": {
             "L": [{
