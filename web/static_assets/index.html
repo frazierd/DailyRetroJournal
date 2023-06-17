@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-    <html>
-    <!--THIS IS THE LANDING PAGE-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daily Retro Journal</title>
-        <link rel="stylesheet" href="css/foundation.css">
-        <link rel="stylesheet" href="css/style.css">
-<!--        <script src="assets/additionalLandingPage.js"></script>-->
-        <script src="assets/viewAllJournalEntries.js"></script>
-    </head>
+<html>
+<!--THIS IS THE LANDING PAGE-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Daily Retro Journal</title>
+    <link rel="stylesheet" href="css/foundation.css">
+    <link rel="stylesheet" href="css/style.css">
+    <!--        <script src="assets/additionalLandingPage.js"></script>-->
+    <script src="assets/viewAllJournalEntries.js"></script>
+</head>
 
     <body>
         <div class="grid-y medium-grid-frame">
@@ -19,7 +19,7 @@
                 <div class="grid-x grid-padding-x">
                 </div>
             </div>
-                    <!-- This is where the summary sidebar starts -->
+        <!-- This is where the summary sidebar starts -->
             <div class="cell medium-auto medium-cell-block-container">
                 <div class="grid-x grid-padding-x">
                     <div class="cell medium-4 medium-cell-block-y" id="journal-entry-summary">
@@ -27,86 +27,36 @@
                         <table>
                             <tbody id="journalSummary"></tbody>
                         </table>
-<!--                            <p>-->
-<!--                                <div class="journal-entry-button">-->
-<!--                                    <div class="date-box">-->
-<!--                                        <span class="month">Jul</span>-->
-<!--                                        <span class="day">14</span>-->
-<!--                                        <span class="year">, 2023</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="entry-content">-->
-<!--                                        Today I fixed what I had thought I learned #APIs and #WebDevelopment....-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </p>-->
-<!--                            <p>-->
-<!--                            <div class="journal-entry-button">-->
-<!--                                <div class="date-box">-->
-<!--                                    <span class="month">Jul</span>-->
-<!--                                    <span class="day">12</span>-->
-<!--                                    <span class="year">, 2023</span>-->
-<!--                                </div>-->
-<!--                                <div class="entry-content">-->
-<!--                                    Today I continued learning...-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            </p>-->
-<!--                            <p>-->
-<!--                            <div class="journal-entry-button">-->
-<!--                                <div class="date-box">-->
-<!--                                    <span class="month">Jul</span>-->
-<!--                                    <span class="day">11</span>-->
-<!--                                    <span class="year">, 2023</span>-->
-<!--                                </div>-->
-<!--                                <div class="entry-content">-->
-<!--                                    Today I began learning #APIs and #WebDevelopment....-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            </p>-->
-<!--                            <p>-->
-<!--                            <div class="journal-entry-button">-->
-<!--                                <div class="date-box">-->
-<!--                                    <span class="month">Jul</span>-->
-<!--                                    <span class="day">8</span>-->
-<!--                                    <span class="year">, 2023</span>-->
-<!--                                </div>-->
-<!--                                <div class="entry-content">-->
-<!--                                    Today I stared blankly into the screen...-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            </p>-->
-                        <p> this is where my calendar representation is going (stretch goal)</p>
+                    <!--
+                                            <p> this is where my calendar representation is going (stretch goal)</p>
 
-                    </div>
-                    <!-- this the text editor-->
-                    <div class="cell medium-8 medium-cell-block-y">
-                        <div class="cell medium-4">
-                            <button id="new-entry-button">+</button>
+                                        </div>
+                                        <-- this the text editor-->
+                        <div class="cell medium-8 medium-cell-block-y">
+                            <div class="cell medium-4">
+                                <button id="new-entry-button">+</button>
+                            </div>
+                            <textarea id="journal-entry" rows="25" placeholder="Write your journal entry here"></textarea>
                         </div>
-                        <textarea id="journal-entry" rows="25" placeholder="Write your journal entry here"></textarea>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <script>
-        // Auto-save functionality
-        const journalEntry = document.getElementById('journal-entry');
+            <script>
+                // Auto-save functionality
+                const journalEntry = document.getElementById('journal-entry');
 
-        journalEntry.addEventListener('input', () => {
-          const entryContent = journalEntry.value;
-          localStorage.setItem('journalEntry', entryContent);
-        });
+                journalEntry.addEventListener('input', () => {
+                const entryContent = journalEntry.value;
+                localStorage.setItem('journalEntry', entryContent);
+                });
 
-        // Retrieve saved entry on page load
-        const savedEntry = localStorage.getItem('journalEntry');
-        if (savedEntry) {
-          journalEntry.value = savedEntry;
-        }
-        </script>
-    <!--        <div class="cell shrink footer">-->
-    <!--            <h3>Here's my footer</h3>-->
-    <!--        </div>-->
+                // Retrieve saved entry on page load
+                const savedEntry = localStorage.getItem('journalEntry');
+                if (savedEntry) {
+                journalEntry.value = savedEntry;
+                }
+            </script>
+        </div>   
     </body>
-
 </html>
