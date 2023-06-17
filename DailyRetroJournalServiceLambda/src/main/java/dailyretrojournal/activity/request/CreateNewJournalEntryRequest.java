@@ -47,6 +47,10 @@ public class CreateNewJournalEntryRequest {
                 '}';
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     @JsonPOJOBuilder
     public static class Builder {
 
