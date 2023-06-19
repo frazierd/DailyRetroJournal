@@ -1,16 +1,33 @@
 <!DOCTYPE html>
-    <html>
-    <!--THIS IS THE LANDING PAGE-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Daily Retro Journal</title>
-        <link rel="stylesheet" href="css/foundation.css">
-        <link rel="stylesheet" href="css/style.css">
-<!--        <script src="assets/additionalLandingPage.js"></script>-->
-        <script src="assets/viewAllJournalEntries.js"></script>
-    </head>
+    <html> 
+        <head>
+            <meta charset="utf-8">
+            <meta http-equiv="x-ua-compatible" content="ie=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+            <title>Daily Retro Journal</title>
+            <link rel="stylesheet" href="css/foundation.css">
+            <link rel="stylesheet" href="css/style.css">
+
+            <style>
+                :root{
+                   /* css variables: https://developer.mozilla.org/en-US/docs/Web/CSS/var */
+                   
+                --background-color:#404040;
+                --text-color: #b5b5b5;
+                --secondary-color: #ffffff
+                }
+
+                body,
+                textarea {
+                    background-color: var(--background-color);
+                    color: var(--secondary-colorr)
+                }
+            </style>
+      
+            <!-- <script src="assets/additionalLandingPage.js"></script>-->
+            <script src="assets/viewAllJournalEntries.js"></script>
+        </head>
 
     <body>
         <div class="grid-y medium-grid-frame">
@@ -27,63 +44,21 @@
                         <table>
                             <tbody id="journalSummary"></tbody>
                         </table>
-<!--                            <p>-->
-<!--                                <div class="journal-entry-button">-->
-<!--                                    <div class="date-box">-->
-<!--                                        <span class="month">Jul</span>-->
-<!--                                        <span class="day">14</span>-->
-<!--                                        <span class="year">, 2023</span>-->
-<!--                                    </div>-->
-<!--                                    <div class="entry-content">-->
-<!--                                        Today I fixed what I had thought I learned #APIs and #WebDevelopment....-->
-<!--                                    </div>-->
-<!--                                </div>-->
-<!--                            </p>-->
-<!--                            <p>-->
-<!--                            <div class="journal-entry-button">-->
-<!--                                <div class="date-box">-->
-<!--                                    <span class="month">Jul</span>-->
-<!--                                    <span class="day">12</span>-->
-<!--                                    <span class="year">, 2023</span>-->
-<!--                                </div>-->
-<!--                                <div class="entry-content">-->
-<!--                                    Today I continued learning...-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            </p>-->
-<!--                            <p>-->
-<!--                            <div class="journal-entry-button">-->
-<!--                                <div class="date-box">-->
-<!--                                    <span class="month">Jul</span>-->
-<!--                                    <span class="day">11</span>-->
-<!--                                    <span class="year">, 2023</span>-->
-<!--                                </div>-->
-<!--                                <div class="entry-content">-->
-<!--                                    Today I began learning #APIs and #WebDevelopment....-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            </p>-->
-<!--                            <p>-->
-<!--                            <div class="journal-entry-button">-->
-<!--                                <div class="date-box">-->
-<!--                                    <span class="month">Jul</span>-->
-<!--                                    <span class="day">8</span>-->
-<!--                                    <span class="year">, 2023</span>-->
-<!--                                </div>-->
-<!--                                <div class="entry-content">-->
-<!--                                    Today I stared blankly into the screen...-->
-<!--                                </div>-->
-<!--                            </div>-->
-<!--                            </p>-->
+
                         <p> this is where my calendar representation is going (stretch goal)</p>
 
                     </div>
                     <!-- this the text editor-->
                     <div class="cell medium-8 medium-cell-block-y">
                         <div class="cell medium-4">
-                            <button id="new-entry-button">+</button>
+                            <button id="new-entry-button"> + </button>
+                            
                         </div>
                         <textarea id="journal-entry" rows="25" placeholder="Write your journal entry here"></textarea>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                            <button class="btn btn-primary me-md-2" id="save" type="button">SAVE</button>
+                            <button class="btn btn-primary" id="update" type="button">UPDATE</button>
+                          </div>
                     </div>
                 </div>
             </div>
@@ -104,9 +79,13 @@
           journalEntry.value = savedEntry;
         }
         </script>
+
     <!--        <div class="cell shrink footer">-->
     <!--            <h3>Here's my footer</h3>-->
     <!--        </div>-->
     </body>
-
-</html>
+    <body>
+        <h1>Daily Retro Journal</h1>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    </body>
+    </html>

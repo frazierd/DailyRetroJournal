@@ -65,14 +65,30 @@ class ViewAllJournalEntries extends BindingClass {
           console.log(dateBox + "this is the datebox created");
 
           //Get the date from the entry
-          const epochTime = parseInt(entryObj.dateEntered, 10);
+          const epochTime = parseInt(entryObj.dateEntered, 10) *1000;
 
           //convert epoch to date object
          const entryDate= new Date(epochTime);
          console.log(entryDate + "this should be converting to a new date");
 
+         //made abreviated months to replace the epoch month number
+         const monthAbbreviations = [
+          "JAN",
+          "FEB",
+          "MAR",
+          "APR",
+          "MAY",
+          "JUN",
+          "JUL",
+          "AUG",
+          "SEP",
+          "OCT",
+          "NOV",
+          "DEC"
+        ];
+
           // Create the entry content
-          const month = entryDate.getMonth() + 1;
+          const month = monthAbbreviations[entryDate.getMonth() + 1];
           const day = entryDate.getDate();
           const year = entryDate.getFullYear();
           console.log(month, day, year + "this should convert epoch to date");
@@ -86,7 +102,7 @@ class ViewAllJournalEntries extends BindingClass {
           // Create the entry content
           const entryContent = document.createElement('div');
           entryContent.classList.add('entry-content');
-          const previewContent = entryObj.content.substring(0, 20); // Get the first 20 characters
+          const previewContent = entryObj.content.substring(0, 30); // Get the first 20 characters
           entryContent.textContent = previewContent;
 
           // Append the date box and entry content to the entry container
