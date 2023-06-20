@@ -282,12 +282,12 @@ Resources:
             Path: /entries/all
             Method: get
 
-  CreatePlaylistLambda:
+  CreateJournalEntryLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: DailyRetroJournalServiceLambda
-      Handler: dailyretrojournal.lambda.CreatePlaylistLambda::handleRequest
+      Handler: dailyretrojournal.lambda.CreateJournalEntryLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64

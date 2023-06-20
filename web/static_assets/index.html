@@ -11,8 +11,8 @@
 
             <style>
                 :root{
-                   /* css variables: https://developer.mozilla.org/en-US/docs/Web/CSS/var */
-                   
+                    /* css variables: https://developer.mozilla.org/en-US/docs/Web/CSS/var */
+                    
                 --background-color:#404040;
                 --text-color: #b5b5b5;
                 --secondary-color: #ffffff
@@ -24,8 +24,7 @@
                     color: var(--secondary-colorr)
                 }
             </style>
-      
-            <!-- <script src="assets/additionalLandingPage.js"></script>-->
+
             <script src="assets/viewAllJournalEntries.js"></script>
         </head>
 
@@ -60,53 +59,29 @@
                             <button class="btn btn-primary" id="delete" type="button">DELETE</button>
                         </div>
                     </div>
-
-                    <script>
-  function createNewEntry() {
-    var previousEntry = document.getElementById("journal-entry").value;
-    var newEntryButton = document.getElementById("new-entry-button");
-
-    // Create a new textarea for the new journal entry
-    var newTextArea = document.createElement("textarea");
-    newTextArea.setAttribute("id", "journal-entry");
-    newTextArea.setAttribute("rows", "25");
-    newTextArea.setAttribute("placeholder", "Write your journal entry here");
-
-    // Clear the previous entry by setting its value to an empty string
-    document.getElementById("journal-entry").value = "";
-
-    // Insert the new textarea after the existing textarea
-    var parentDiv = newEntryButton.parentNode.parentNode; // Go two levels up to the outermost div
-    parentDiv.insertBefore(newTextArea, newEntryButton.parentNode.nextSibling);
-  }
-                    </script>
-
                 </div>
             </div>
         </div>
 
-        <script>
-        // Auto-save functionality
-        const journalEntry = document.getElementById('journal-entry');
 
-        journalEntry.addEventListener('input', () => {
-          const entryContent = journalEntry.value;
-          localStorage.setItem('journalEntry', entryContent);
-        });
+<!--    <script>-->
+<!--        // Auto-save functionality-->
+<!--        const journalEntry = document.getElementById('journal-entry');-->
 
-        // Retrieve saved entry on page load
-        const savedEntry = localStorage.getItem('journalEntry');
-        if (savedEntry) {
-          journalEntry.value = savedEntry;
-        }
-        </script>
+<!--        journalEntry.addEventListener('input', () => {-->
+<!--            const entryContent = journalEntry.value;-->
+<!--            localStorage.setItem('journalEntry', entryContent);-->
+<!--        });-->
 
-    <!--        <div class="cell shrink footer">-->
-    <!--            <h3>Here's my footer</h3>-->
-    <!--        </div>-->
-    </body>
-    <body>
-        <h1>Tech Stack</h1>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<!--        // Retrieve saved entry on page load-->
+<!--        const savedEntry = localStorage.getItem('journalEntry');-->
+<!--        if (savedEntry) {-->
+<!--            journalEntry.value = savedEntry;-->
+<!--        }-->
+<!--    </script>-->
+
+
+    <h1>Tech Stack</h1>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
     </html>

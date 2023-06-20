@@ -16,51 +16,26 @@ class ViewAllJournalEntries extends BindingClass {
       'clientLoaded',
       'mount',
       'readDataStoreAddJournalEntryToSummary',
-      'viewJournal'
-      'saveJournalEntry'
+      'viewJournal',
+      'deleteEntry',
+      'saveEntry'
     ];
+
     this.bindClassMethods(methodsToBind, this);
     this.dataStore = new DataStore();
     this.dataStore.addChangeListener(this.readDataStoreAddJournalEntryToSummary);
     this.header = new Header(this.dataStore);
   }
 
-   async saveJournalEntry() {
-      const journalEntry = document.getElementById('journal-entry').value;
-
-      if (journalEntry) {
-        const newJournalEntry = await this.client.createJournalEntry(journalEntry);
-        if (newJournalEntry) {
-          // Add the new entry to the data store
-          const currentJournalEntries = this.dataStore.get('journals') || [];
-          currentJournalEntries.push(newJournalEntry);
-          this.dataStore.set('journals', currentJournalEntries);
-          //clear the Text Editor
-          document.getElementById('journal-entry'). value = '';
-          this.updateJournalEntrySummary();
-        }
-      }
-   }
-   updateJournalEntrySummary() {
-       const journalEntries = this.dataStore.get('journals');
-       const summaryContainer = document.getElementById('journal-entry-summary');
-       summaryContainer.innerHTML = ''; // Clear the existing entries
-
-       journalEntries.forEach((entryObj) => {
-         // ... Existing code to create entryContainer, dateBox, entryContent ...
-
-         summaryContainer.appendChild(entryContainer);
-       });
-     }
-
     async clientLoaded() {
         const identity = await this.client.getIdentity();
         if (identity == undefined) {
             this.clientPlaylist.login();
              }
-//        console.log(identity + "this is letting you know what is going on with your identity");
+        console.log(identity + "this is letting you know what is going on with your identity");
         const journalEntries = await this.client.getAllJournalEntries();
         this.dataStore.set('journals', journalEntries);
+        this.dataStore.set('selectedJournalId', journalEntries[0].id);
 //        console.log (journalEntries + "these are suppose to be your journal entries");
         this.dataStore.set('email', identity.email);
       }
@@ -72,17 +47,21 @@ class ViewAllJournalEntries extends BindingClass {
         this.client = new RetroJournalClient();
         this.clientPlaylist = new PlaylistClient();
         this.clientLoaded();
-      }
-
+        const deleteButton = document.getElementById('delete');
+              deleteButton.addEventListener('click', this.deleteEntry);
+        const saveButton = document.getElementById('save');
+          saveButton.addEventListener('click', this.saveEntry);
+       }
 
    async viewJournal(event) {
    event.preventDefault();
 //   console.log(event.target.dataset.journalId + "this is where I am wanting to see the WHOLE journal");
-//   this.dataStore.set('selectedJournalId', event.target.dataset.journalId); //. The purpose of this line is to store the selected journal ID in the data store
     const journalId = event.target.dataset.journalId;
     const selectedJournalEntry= this.dataStore.get('journals').find(entry => entry.id === journalId);
+    this.dataStore.set('selectedJournalId', journalId);
     if (selectedJournalEntry) {
         const journalEntryFullText = document.getElementById('journal-entry');
+        journalEntryFullText.value = ""; // Clear the current text box
         journalEntryFullText.value = selectedJournalEntry.content;
         }
    }
@@ -163,6 +142,40 @@ class ViewAllJournalEntries extends BindingClass {
           summaryContainer.appendChild(entryContainer);
         });
     }
+    async deleteEntry() {
+    console.log("deleteEntry");
+    const selectedJournalId = this.dataStore.get('selectedJournalId');
+    console.log(selectedJournalId);
+    if (!selectedJournalId) {
+        return; // if there is no selected Id then there is nothing to delete
+        }
+
+        try {
+            await this.client.deleteEntry(selectedJournalId);
+            const journalEntryFullText = document.getElementById('journal-entry');
+            journalEntryFullText.value = ""; // this clears the text box and reloads the journal entry summary
+            window.location.href = "/";
+          } catch (error) {
+          console.error('ERROR deleting journal entry:', error);
+          }
+    }
+
+     async saveEntry() {
+            const journalEntryContent = document.getElementById('journal-entry').value;
+            const newEntry = {
+                  content: journalEntryContent
+                };
+                try {
+                //call API to save the entry
+                await this.client.saveJournalEntry(newEntry);
+                //clear the text field
+                document.getElementById('journal-entry').value = "";
+                //refresh the summary section
+                await this.clientLoaded();
+              } catch (error) {
+                console.error('ERROR saving journal entry:', error);
+              }
+     }
 }
 // Main method to run when the page contents have loaded
 const main = async () => {

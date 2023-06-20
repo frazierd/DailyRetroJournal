@@ -70,7 +70,7 @@ import Authenticator from "./authenticator";
 
         async getAllJournalEntries(errorCallback) {
            try {
-               const response = await this.axiosClient.get(`entries/all`);
+               const response = await this.axiosClient.get('entries/all');
                console.log(JSON.stringify(response, null, 4) + "endpoint response");
                return response.data.allJournalEntriesList; // this method comes from the GetALllJournalEntriesResult.java builder
            } catch (error) {
@@ -78,6 +78,18 @@ import Authenticator from "./authenticator";
                return []; // Return an empty array in case of error
            }
         }
+
+        async deleteEntry(entryId, errorCallback) {
+            try {
+                const response = await this.axiosClient.delete(`entries/${entryId}`);
+                return response.data.journalEntryModel;
+            } catch (error) {
+                this.handleError(error, errorCallback);
+                return null;
+            }
+        }
+
+//        async createJournalEntry()
 
      /**
          * Helper method to log the error and run any error functions.
