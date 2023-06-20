@@ -15,7 +15,8 @@ class ViewAllJournalEntries extends BindingClass {
     const methodsToBind = [
       'clientLoaded',
       'mount',
-      'readDataStoreAddJournalEntryToSummary'
+      'readDataStoreAddJournalEntryToSummary',
+      'viewJournal'
     ];
     this.bindClassMethods(methodsToBind, this);
     this.dataStore = new DataStore();
@@ -28,10 +29,10 @@ class ViewAllJournalEntries extends BindingClass {
         if (identity == undefined) {
             this.clientPlaylist.login();
              }
-        console.log(identity + "this is letting you know what is going on with your identity");
+//        console.log(identity + "this is letting you know what is going on with your identity");
         const journalEntries = await this.client.getAllJournalEntries();
-        this.dataStore.set('journal', journalEntries);
-        console.log (journalEntries + "these are suppose to be your journal entries");
+        this.dataStore.set('journals', journalEntries);
+//        console.log (journalEntries + "these are suppose to be your journal entries");
         this.dataStore.set('email', identity.email);
       }
 
@@ -42,39 +43,69 @@ class ViewAllJournalEntries extends BindingClass {
         this.client = new RetroJournalClient();
         this.clientPlaylist = new PlaylistClient();
         this.clientLoaded();
-
       }
 
+   async viewJournal(event) {
+   event.preventDefault();
+//   console.log(event.target.dataset.journalId + "this is where I am wanting to see the WHOLE journal");
+//   this.dataStore.set('selectedJournalId', event.target.dataset.journalId); //. The purpose of this line is to store the selected journal ID in the data store
+    const journalId = event.target.dataset.journalId;
+    const selectedJournalEntry= this.dataStore.get('journals').find(entry => entry.id === journalId);
+    if (selectedJournalEntry) {
+        const journalEntryFullText = document.getElementById('journal-entry');
+        journalEntryFullText.value = selectedJournalEntry.content;
+        }
+   }
+
     async readDataStoreAddJournalEntryToSummary() { //made this a very descriptive name about how it is reading
-        let journalEntries = this.dataStore.get('journal');
+        let journalEntries = this.dataStore.get('journals');
         // Get the journal entry summary container
         const summaryContainer = document.getElementById('journal-entry-summary');
 
       // Loop through the entries and create the HTML elements
         journalEntries.forEach((entryObj) => {
-        const entry = entryObj.PutRequest.Item;
+//        console.log(JSON.stringify(entryObj) + " this is the entryObject LOOK FOR THE ALL CAPS");
+//        const entry = entryObj.PutRequest.Item;
 
       // Create the container div for each entry
         const entryContainer = document.createElement('div');
         entryContainer.classList.add('journal-entry-button'); //eventually this will be the button that calls the GET journal entry but {entryID}
 
+        entryContainer.dataset.journalId = entryObj.id;
+        entryContainer.addEventListener('click', this.viewJournal);
             // Create the date box
           const dateBox = document.createElement('div');
           dateBox.classList.add('date-box');
-          console.log(dateBox + "this is the datebox created");
+//          console.log(dateBox + "this is the datebox created");
 
           //Get the date from the entry
-          const epochTime = Date.parseInt(entry.dateEntered.S, 10);
+          const epochTime = parseInt(entryObj.dateEntered, 10) *1000;
 
           //convert epoch to date object
          const entryDate= new Date(epochTime);
-         console.log(entryDate + "this should be converting to a new date");
+//         console.log(entryDate + "this should be converting to a new date");
+
+         //made abreviated months to replace the epoch month number
+         const monthAbbreviations = [
+          "JAN",
+          "FEB",
+          "MAR",
+          "APR",
+          "MAY",
+          "JUN",
+          "JUL",
+          "AUG",
+          "SEP",
+          "OCT",
+          "NOV",
+          "DEC"
+        ];
 
           // Create the entry content
-          const month = entryDate.getMonth() + 1;
+          const month = monthAbbreviations[entryDate.getMonth() + 1];
           const day = entryDate.getDate();
           const year = entryDate.getFullYear();
-          console.log(month, day, year + "this should convert epoch to date");
+//          console.log(month, day, year + "this should convert epoch to date");
 
 
           // Set the inner HTML of the date box
@@ -85,14 +116,18 @@ class ViewAllJournalEntries extends BindingClass {
           // Create the entry content
           const entryContent = document.createElement('div');
           entryContent.classList.add('entry-content');
-          const previewContent = entry.content.substring(0, 20); // Get the first 20 characters
+          const maxPreviewLength = 30; // Maximum length of the preview content
+          const previewContent = entryObj.content.length > maxPreviewLength
+            ? entryObj.content.substring(0, maxPreviewLength) + "..." // Add "..." if the content exceeds the maximum length
+            : entryObj.content;
+
           entryContent.textContent = previewContent;
 
           // Append the date box and entry content to the entry container
           entryContainer.appendChild(dateBox);
           entryContainer.appendChild(entryContent);
 
-          console.log(entryContainer);
+//          console.log(entryContainer);
 
           // Append the entry container to the summary container
           summaryContainer.appendChild(entryContainer);

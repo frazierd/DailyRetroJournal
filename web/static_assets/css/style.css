@@ -3,33 +3,50 @@
     --primary-color: #111112;
     --secondary-color: #ffffff;
     --tertiary-color: #4682b4;
-    --background-color: #404245;
+    --background-color:#404040;
+    --lightground-color:#7f7f7f;
     --box-color: 	#000000;
     --error-color: #EE3A23;
-    --button-color: #08a1a1;
+    --button-color: #B5B5B5;
     --hashtag-color: #2871bf;
 }
 
 /* some of the additional styling for the Retro Journal
 */
+#save {
+  font-weight: bold;
+  background-color: var(--lightground-color);
+}
+
+#update {
+  font-weight: bold;
+  background-color: var(--lightground-color);
+}
 #new-entry-button {
   width: 1cm;
   height: 1cm;
-  background-color: #777777;
-  color: #F0FFFF;
+  background-color: var(--button-color);
+  color:var(--secondary-color);
   border: none;
   border-radius: 5px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
   font-size: 1.5rem;
   font-weight: bold;
 }
+#journal-entry {
+  background-color: #111112;
+  color: var(--secondary-color);
+}
+
+
 .journal-entry-button {
   display: flex;
   align-items: center;
-  background-color: #f2f2f2;
+  background-color: var(--box-color);
   padding: 10px;
   border-radius: 5px;
   cursor: pointer;
+  margin-bottom:5px;
 }
 
 .journal-entry-button:hover {
@@ -38,12 +55,12 @@
 
 .journal-entry-date {
   font-weight: bold;
-  color: #333;
+  color:var(--lightground-color);
   margin-right: 10px;
 }
 
 .journal-entry-content {
-  color: #333;
+  color: var(--secondary-color);
 }
 .hashtag-symbol {
   color: blue;
@@ -57,7 +74,7 @@
 .date-box {
   width: 80px;
   height: 80px;
-  background-color: #bdbdbd;
+  background-color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,6 +103,8 @@
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  background-color:var(--box-color);
+  color: var(--secondary-color);
 }
 
 #new-entry-button:hover {
@@ -138,13 +157,13 @@
     line-height: 36px;
     height: 100px;
     text-decoration: none;
-    color: var(--secondary-color);
+    color: var(--background-color));
     font-family: "Arial", sans-serif;
 }
 
 .card {
     color: var(--primary-color);
-    background-color: var(--secondary-color);
+    background-color: var(--background-color);
     margin: 20px;
     padding: 10px 20px;
 }

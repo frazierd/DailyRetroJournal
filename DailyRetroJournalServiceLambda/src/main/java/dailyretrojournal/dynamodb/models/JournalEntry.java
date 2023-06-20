@@ -18,6 +18,8 @@ public class JournalEntry {
     private String dateEntered;
     private List<String> hashtag;
 
+
+
     @DynamoDBHashKey(attributeName = "id")
     public String getId() {
         return entryId;
@@ -36,7 +38,7 @@ public class JournalEntry {
         this.content = content;
     }
 
-    @DynamoDBAttribute(attributeName = "date")
+    @DynamoDBAttribute(attributeName = "dateEntered")
     public String getDateEntered() {
         return dateEntered;
     }

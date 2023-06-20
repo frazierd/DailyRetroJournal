@@ -22,18 +22,16 @@ public class CreateNewJournalEntryActivity {
         this.journalEntryDao = journalEntrydao;
     }
 
-    public CreateNewJournalEntryResult handleRequest (CreateNewJournalEntryRequest request) {
 
-            JournalEntry savedJournalEntry = journalEntryDao.saveJournalEntry(request.getContent(),
-                    request.getDateEntered(), request.getHashtag());
+    public CreateNewJournalEntryResult handleRequest(CreateNewJournalEntryRequest request) {
 
-            JournalEntryModel journalEntryModel = new ModelConverter().toJournalEntryModel(savedJournalEntry);
+        JournalEntry savedJournalEntry = journalEntryDao.saveJournalEntry(request.getContent(), request.getDateEntered(), request.getHashtag());
 
-            return CreateNewJournalEntryResult.builder()
-                    .withNewEntry(journalEntryModel)
-                    .build();
-        }
+        JournalEntryModel journalEntryModel = new ModelConverter().toJournalEntryModel(savedJournalEntry);
+
+        return CreateNewJournalEntryResult.builder()
+                .withNewEntry(journalEntryModel)
+                .build();
     }
-
-
+}
 

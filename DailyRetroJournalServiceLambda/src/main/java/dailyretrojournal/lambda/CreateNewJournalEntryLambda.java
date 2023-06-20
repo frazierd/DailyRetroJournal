@@ -30,5 +30,6 @@ public class CreateNewJournalEntryLambda extends LambdaActivityRunner <CreateNew
                         serviceComponent.provideCreateNewJournalEntryActivity().handleRequest(request)
         );
     }
+
 }
 

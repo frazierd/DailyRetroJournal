@@ -1,5 +1,4 @@
 package dailyretrojournal.lambda;
-
 import dailyretrojournal.dependency.DaggerServiceComponent;
 import dailyretrojournal.dependency.ServiceComponent;
 
