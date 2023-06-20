@@ -2,6 +2,7 @@ package dailyretrojournal.dependency;
 
 
 import dagger.Component;
+import dailyretrojournal.activity.CreateNewJournalEntryActivity;
 import dailyretrojournal.activity.GetAllJournalEntriesActivity;
 import dailyretrojournal.activity.GetJournalEntryActivity;
 
@@ -17,6 +18,8 @@ public interface ServiceComponent {
     GetJournalEntryActivity provideGetJournalEntryActivity();
 
     GetAllJournalEntriesActivity provideGetAllJournalEntriesActivity();
+
+    CreateNewJournalEntryActivity provideCreateNewJournalEntryActivity();
 
     /**
      * Provides the relevant activity.

@@ -9,6 +9,7 @@ import org.apache.logging.log4j.Logger;
 
 import javax.inject.Inject;
 import java.util.List;
+import java.util.UUID;
 
 public class JournalEntryDao {
 
@@ -54,7 +55,12 @@ public class JournalEntryDao {
         return journalEntryToRemove;
     }
 
-    public JournalEntry saveJournalEntry(JournalEntry journalEntry) {
+    public JournalEntry saveJournalEntry(String content, String dateEntered, List<String> hashtag) {
+        JournalEntry journalEntry = new JournalEntry();
+        journalEntry.setId(String.valueOf(UUID.randomUUID()));
+        journalEntry.setContent(content);
+        journalEntry.setDateEntered(dateEntered);
+        journalEntry.setHashtag(hashtag);
         this.mapper.save(journalEntry);
         return journalEntry;
     }
