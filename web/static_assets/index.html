@@ -51,16 +51,36 @@
                     <!-- this the text editor-->
                     <div class="cell medium-8 medium-cell-block-y">
                         <div class="cell medium-4">
-                            <button id="new-entry-button"> + </button>
-                            
+                            <button id="new-entry-button" onclick="createNewEntry()"> + </button>
                         </div>
                         <textarea id="journal-entry" rows="25" placeholder="Write your journal entry here"></textarea>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
                             <button class="btn btn-primary me-md-2" id="save" type="button">SAVE</button>
                             <button class="btn btn-primary me-md-2" id="update" type="button">UPDATE</button>
                             <button class="btn btn-primary" id="delete" type="button">DELETE</button>
-                          </div>
+                        </div>
                     </div>
+
+                    <script>
+  function createNewEntry() {
+    var previousEntry = document.getElementById("journal-entry").value;
+    var newEntryButton = document.getElementById("new-entry-button");
+
+    // Create a new textarea for the new journal entry
+    var newTextArea = document.createElement("textarea");
+    newTextArea.setAttribute("id", "journal-entry");
+    newTextArea.setAttribute("rows", "25");
+    newTextArea.setAttribute("placeholder", "Write your journal entry here");
+
+    // Clear the previous entry by setting its value to an empty string
+    document.getElementById("journal-entry").value = "";
+
+    // Insert the new textarea after the existing textarea
+    var parentDiv = newEntryButton.parentNode.parentNode; // Go two levels up to the outermost div
+    parentDiv.insertBefore(newTextArea, newEntryButton.parentNode.nextSibling);
+  }
+                    </script>
+
                 </div>
             </div>
         </div>

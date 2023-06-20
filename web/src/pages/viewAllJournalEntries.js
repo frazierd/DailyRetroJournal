@@ -17,12 +17,41 @@ class ViewAllJournalEntries extends BindingClass {
       'mount',
       'readDataStoreAddJournalEntryToSummary',
       'viewJournal'
+      'saveJournalEntry'
     ];
     this.bindClassMethods(methodsToBind, this);
     this.dataStore = new DataStore();
     this.dataStore.addChangeListener(this.readDataStoreAddJournalEntryToSummary);
     this.header = new Header(this.dataStore);
   }
+
+   async saveJournalEntry() {
+      const journalEntry = document.getElementById('journal-entry').value;
+
+      if (journalEntry) {
+        const newJournalEntry = await this.client.createJournalEntry(journalEntry);
+        if (newJournalEntry) {
+          // Add the new entry to the data store
+          const currentJournalEntries = this.dataStore.get('journals') || [];
+          currentJournalEntries.push(newJournalEntry);
+          this.dataStore.set('journals', currentJournalEntries);
+          //clear the Text Editor
+          document.getElementById('journal-entry'). value = '';
+          this.updateJournalEntrySummary();
+        }
+      }
+   }
+   updateJournalEntrySummary() {
+       const journalEntries = this.dataStore.get('journals');
+       const summaryContainer = document.getElementById('journal-entry-summary');
+       summaryContainer.innerHTML = ''; // Clear the existing entries
+
+       journalEntries.forEach((entryObj) => {
+         // ... Existing code to create entryContainer, dateBox, entryContent ...
+
+         summaryContainer.appendChild(entryContainer);
+       });
+     }
 
     async clientLoaded() {
         const identity = await this.client.getIdentity();
@@ -44,6 +73,7 @@ class ViewAllJournalEntries extends BindingClass {
         this.clientPlaylist = new PlaylistClient();
         this.clientLoaded();
       }
+
 
    async viewJournal(event) {
    event.preventDefault();
