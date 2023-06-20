@@ -22,6 +22,7 @@ public class CreateNewJournalEntryActivity {
         this.journalEntryDao = journalEntrydao;
     }
 
+
     public CreateNewJournalEntryResult handleRequest(CreateNewJournalEntryRequest request) {
 
         JournalEntry savedJournalEntry = journalEntryDao.saveJournalEntry(request.getContent(), request.getDateEntered(), request.getHashtag());
@@ -33,35 +34,4 @@ public class CreateNewJournalEntryActivity {
                 .build();
     }
 }
-//
-//         // create a new JournalEntryModel object.
-//        JournalEntryModel model = JournalEntryModel.builder()
-//                .withId(requestId)
-//                .withContent(requestContent)
-//                .withDateEntered(requestDateEntered)
-//                .withHashtag(requestHashtag)
-//                .build();
-//
-//        // convert the new model object to a JournalEntry to pass into saveJournalEntry
-//        JournalEntry newJournalEntry = new JournalEntry(
-//                 model.getId(),
-//                 model.getContent(),
-//                 model.getDateEntered(),
-//                 model.getHashtag());
-//
-//         journalEntryDao.saveJournalEntry(newJournalEntry);
-//
-////        journalEntry.setId(requestedId);
-////        journalEntry.setContent(content);
-////        journalEntry.setDateEntered(dateEntered);
-////        journalEntry.setHashtag(hashtag);
-//
-//
-//        CreateNewJournalEntryResult result = CreateNewJournalEntryResult.builder()
-//                .withNewEntry(journalEntryModel)
-//                .build();
-//
-//         return result;
-//    }
-//
-//}
+

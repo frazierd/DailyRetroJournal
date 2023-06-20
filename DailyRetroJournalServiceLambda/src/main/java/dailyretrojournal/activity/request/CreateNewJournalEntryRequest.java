@@ -51,6 +51,10 @@ public class CreateNewJournalEntryRequest {
                 '}';
     }
 
+    public static Builder builder() {
+        return new Builder();
+    }
+
     @JsonPOJOBuilder
     public static class Builder {
 
@@ -60,20 +64,20 @@ public class CreateNewJournalEntryRequest {
         private List<String> hashtag;
 
         public Builder withId(String entryId) {
-            this.entryId = entryId;
+            this.entryId = this.entryId;
             return this;
         }
         public Builder withContent(String content) {
-            this.content = content;
+            this.content = this.content;
             return this;
         }
         public Builder withDateEntered(String dateEntered) {
-            this.dateEntered = dateEntered;
+            this.dateEntered = this.dateEntered;
             return this;
         }
 
         public Builder withHashtag(List<String> hashtag) {
-            this.hashtag = hashtag;
+            this.hashtag = this.hashtag;
             return this;
         }
 
