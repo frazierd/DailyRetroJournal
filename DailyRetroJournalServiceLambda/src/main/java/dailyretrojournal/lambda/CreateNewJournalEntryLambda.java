@@ -1,4 +1,4 @@
-package dailyretrojournal.lambda;
-
-public class CreateNewJournalEntryLambda extends LambdaActivityRunner {
-}
+//package dailyretrojournal.lambda;
+//
+//public class CreateNewJournalEntryLambda extends LambdaActivityRunner {
+//}
