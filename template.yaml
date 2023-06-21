@@ -261,6 +261,7 @@ Resources:
             Path: /entries/all
             Method: get
 
+
   CreateNewJournalEntryLambda:
     Type: AWS::Serverless::Function
     Properties:

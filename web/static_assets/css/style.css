@@ -16,17 +16,25 @@
 #save {
   font-weight: bold;
   background-color: var(--lightground-color);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
+}
+
+#delete {
+  font-weight: bold;
+  background-color: var(--lightground-color);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 
 #update {
   font-weight: bold;
   background-color: var(--lightground-color);
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
 }
 #new-entry-button {
-  width: 1cm;
-  height: 1cm;
+  width: 1.3cm;
+  height: 1.3cm;
   background-color: var(--button-color);
-  color:var(--secondary-color);
+  color:var(--hashtag-color);
   border: none;
   border-radius: 5px;
   box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.5);
