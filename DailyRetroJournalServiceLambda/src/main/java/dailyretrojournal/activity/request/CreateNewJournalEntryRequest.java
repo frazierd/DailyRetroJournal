@@ -21,10 +21,6 @@ public class CreateNewJournalEntryRequest {
        this.hashtag = hashtag;
     }
 
-    public static Builder builder() {
-        return new Builder();
-    }
-
     public String getEntryId() {
         return entryId;
     }
