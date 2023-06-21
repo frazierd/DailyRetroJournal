@@ -261,12 +261,12 @@ Resources:
             Path: /entries/all
             Method: get
 
-  CreatePlaylistLambda:
+  CreateNewJournalEntryLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: DailyRetroJournalServiceLambda
-      Handler: dailyretrojournal.lambda.CreatePlaylistLambda::handleRequest
+      Handler: dailyretrojournal.lambda.CreateNewJournalEntryLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
@@ -301,7 +301,7 @@ Resources:
             Path: /entries/{entryId}
             Method: delete
 
-  UpdateJournalEntry:
+  UpdateJournalEntryLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
@@ -367,6 +367,10 @@ Outputs:
   CognitoDomain:
     Value: !Sub "${CognitoDomain}.auth.us-east-2.amazoncognito.com"
     Description: "The Cognito Domain (COGNITO_DOMAIN)."
+
+  ApiBaseUrl:
+    Description: "API Gateway endpoint base URL for Prod stage (API_BASE_URL)."
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
 
   CognitoRedirectSignin:
     Description: "The URL of the deployed front-end application (COGNITO_REDIRECT_SIGNIN)."
