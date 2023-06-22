@@ -23,7 +23,8 @@ public class CreateNewJournalEntryActivity {
     }
 
 
-    public CreateNewJournalEntryResult handleRequest(CreateNewJournalEntryRequest request) {
+    public CreateNewJournalEntryResult handleRequest(final CreateNewJournalEntryRequest request) {
+        log.info("recieved createJournalEntryRequest {}", request);
 
         JournalEntry savedJournalEntry = journalEntryDao.saveJournalEntry(request.getContent(), request.getDateEntered(), request.getHashtag());
 
@@ -34,4 +35,5 @@ public class CreateNewJournalEntryActivity {
                 .build();
     }
 }
+
 

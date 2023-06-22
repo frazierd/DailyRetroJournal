@@ -12,10 +12,10 @@ public class GetAllJournalEntriesLambda extends LambdaActivityRunner<GetJournalA
         implements RequestHandler<AuthenticatedLambdaRequest<GetJournalAllEntriesRequest>, LambdaResponse> {
 
     private final Logger log = LogManager.getLogger();
-
+    @Override
     public LambdaResponse handleRequest(AuthenticatedLambdaRequest<GetJournalAllEntriesRequest> input, Context context) {
         log.fatal("This is A lambda HandleRequest");
-        return runActivity(
+        return super.runActivity(
                 () -> input.fromPath(path ->
                         GetJournalAllEntriesRequest.builder()
                                 .build()),
@@ -24,5 +24,7 @@ public class GetAllJournalEntriesLambda extends LambdaActivityRunner<GetJournalA
 
     }
 }
+
+
 
 

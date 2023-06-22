@@ -28,12 +28,16 @@ class ViewAllJournalEntries extends BindingClass {
   }
 
     async clientLoaded() {
+    console.log("client loaded{}");
         const identity = await this.client.getIdentity();
+        console.log("client loaded identity{}", identity);
         if (identity == undefined) {
+        console.log("client playlist login{}");
             this.clientPlaylist.login();
              }
         console.log(identity + "this is letting you know what is going on with your identity");
         const journalEntries = await this.client.getAllJournalEntries();
+        console.log("journalEntries: {}", journalEntries);
         this.dataStore.set('journals', journalEntries);
         this.dataStore.set('selectedJournalId', journalEntries[0].id);
 //        console.log (journalEntries + "these are suppose to be your journal entries");

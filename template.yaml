@@ -261,12 +261,13 @@ Resources:
             Path: /entries/all
             Method: get
 
-  CreateJournalEntryLambda:
+
+  CreateNewJournalEntryLambda:
     Type: AWS::Serverless::Function
     Properties:
       Role: !GetAtt AccessRole.Arn
       CodeUri: DailyRetroJournalServiceLambda
-      Handler: dailyretrojournal.lambda.CreateJournalEntryLambda::handleRequest
+      Handler: dailyretrojournal.lambda.CreateNewJournalEntryLambda::handleRequest
       Runtime: java11
       Architectures:
         - x86_64
