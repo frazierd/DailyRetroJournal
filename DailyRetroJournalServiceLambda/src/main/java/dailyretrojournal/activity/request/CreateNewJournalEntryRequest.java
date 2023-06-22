@@ -60,20 +60,20 @@ public class CreateNewJournalEntryRequest {
         private List<String> hashtag;
 
         public Builder withId(String entryId) {
-            this.entryId = this.entryId;
+            this.entryId = entryId;
             return this;
         }
         public Builder withContent(String content) {
-            this.content = this.content;
+            this.content = content;
             return this;
         }
         public Builder withDateEntered(String dateEntered) {
-            this.dateEntered = this.dateEntered;
+            this.dateEntered = dateEntered;
             return this;
         }
 
         public Builder withHashtag(List<String> hashtag) {
-            this.hashtag = this.hashtag;
+            this.hashtag = hashtag;
             return this;
         }
 

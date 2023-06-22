@@ -24,10 +24,10 @@ public class CreateNewJournalEntryActivity {
 
 
     public CreateNewJournalEntryResult handleRequest(final CreateNewJournalEntryRequest request) {
-        log.info("recieved createJournalEntryRequest {}", request);
+        log.fatal("recieved createJournalEntryRequest {}", request);
 
         JournalEntry savedJournalEntry = journalEntryDao.saveJournalEntry(request.getContent(), request.getDateEntered(), request.getHashtag());
-
+        log.fatal("saved journal entry {}", savedJournalEntry);
         JournalEntryModel journalEntryModel = new ModelConverter().toJournalEntryModel(savedJournalEntry);
 
         return CreateNewJournalEntryResult.builder()

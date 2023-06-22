@@ -83,7 +83,7 @@ import Authenticator from "./authenticator";
 
         async deleteEntry(entryId, errorCallback) {
             try {
-                const token = await this.getTokenOrThrow("Only authenticated users can create playlists.");
+                const token = await this.getTokenOrThrow("Only authenticated users can delete entries.");
                 const response = await this.axiosClient.delete(`entries/${entryId}`, {headers: {'Authorization': `Bearer ${token}`}});
                 return response.data.journalEntryModel;
             } catch (error) {
@@ -92,8 +92,26 @@ import Authenticator from "./authenticator";
             }
         }
 
-//        async createJournalEntry()
-
+      async createJournalEntry(content, dateEntered, hashtag, errorCallback) {
+        try {
+          const token = await this.getTokenOrThrow("Only authenticated users can create playlists.");
+          const response = await this.axiosClient.post(
+            '/entries/create', {
+              content: content,
+              dateEntered: dateEntered,
+              hashtag: hashtag
+            }, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            }
+          );
+          return response.data.journalEntryModel;
+        } catch (error) {
+          this.handleError(error, errorCallback);
+          return null;
+        }
+      }
      /**
          * Helper method to log the error and run any error functions.
          * @param error The error received from the server.

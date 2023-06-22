@@ -18,14 +18,16 @@ public class CreateNewJournalEntryLambda extends LambdaActivityRunner <CreateNew
                 () -> {
                     CreateNewJournalEntryRequest unauthenticatedRequest =
                             input.fromBody(CreateNewJournalEntryRequest.class);
+                    log.info("Create new unauthenticated request{}", unauthenticatedRequest);
                     return input.fromUserClaims(claims ->
                             CreateNewJournalEntryRequest.builder()
-                                    .withId(unauthenticatedRequest.getEntryId())
+//                                    .withId(unauthenticatedRequest.getEntryId())
                                     .withContent(unauthenticatedRequest.getContent())
                                     .withDateEntered(unauthenticatedRequest.getDateEntered())
                                     .withHashtag(unauthenticatedRequest.getHashtag())
                                     .build());
                 },
+
                 (request, serviceComponent) ->
                         serviceComponent.provideCreateNewJournalEntryActivity().handleRequest(request)
         );

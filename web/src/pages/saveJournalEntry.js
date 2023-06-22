@@ -32,6 +32,7 @@ class SaveJournalEntry extends BindingClass {
           mount() {
             this.client = new RetroJournalClient();
             this.clientLoaded();
+            c
           }
 
           async saveEntry(entry) {
@@ -46,11 +47,25 @@ class SaveJournalEntry extends BindingClass {
 
         const saveJournalEntry = new SaveJournalEntry();
         const saveButton = document.getElementById('save-button');
-        saveButton.addEventListener('click',() => {
-            const entry = {
-           };
-           saveJournalEntry.saveEntry(entry);
-           });
+        saveButton.addEventListener('click', async () => {
+          const journalEntryTextarea = document.getElementById('journal-entry');
+          const entry = journalEntryTextarea.value.trim();
 
+          if (entry.length > 0) {
+             const currentDate = new Date().toISOString();
+                const hashtag = 'your-hashtag'; // Replace with the desired hashtag
+                await saveJournalEntry.createJournalEntry(entryContent, currentDate, hashtag);
+                // Reload the journal entries sidebar
+                await saveJournalEntry.loadJournalEntries();
+              } else {
+                console.log('Empty journal entry. Nothing to save.');
+              }
+            });
+// Main method to run when the page contents have loaded
+const main = async () => {
+  const saveJournalEntry = new saveJournalEntry();
+  saveJournalEntry.mount();
+};
 
+window.addEventListener('DOMContentLoaded', main);
 
