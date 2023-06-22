@@ -26,3 +26,5 @@ public class GetJournalEntryLambda extends LambdaActivityRunner<GetJournalEntryR
                         serviceComponent.provideGetJournalEntryActivity().handleRequest(request));
     }
 }
+
+

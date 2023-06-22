@@ -70,7 +70,9 @@ import Authenticator from "./authenticator";
 
         async getAllJournalEntries(errorCallback) {
            try {
-               const response = await this.axiosClient.get('entries/all');
+               const token = await this.getTokenOrThrow("Only authenticated users can create playlists.");
+               const response = await this.axiosClient.get('entries/all', {headers: {'Authorization': `Bearer ${token}`}});
+
                console.log(JSON.stringify(response, null, 4) + "endpoint response");
                return response.data.allJournalEntriesList; // this method comes from the GetALllJournalEntriesResult.java builder
            } catch (error) {
@@ -81,7 +83,8 @@ import Authenticator from "./authenticator";
 
         async deleteEntry(entryId, errorCallback) {
             try {
-                const response = await this.axiosClient.delete(`entries/${entryId}`);
+                const token = await this.getTokenOrThrow("Only authenticated users can create playlists.");
+                const response = await this.axiosClient.delete(`entries/${entryId}`, {headers: {'Authorization': `Bearer ${token}`}});
                 return response.data.journalEntryModel;
             } catch (error) {
                 this.handleError(error, errorCallback);
