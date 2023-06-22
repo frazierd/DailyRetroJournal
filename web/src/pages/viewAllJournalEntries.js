@@ -23,7 +23,7 @@ class ViewAllJournalEntries extends BindingClass {
 
     this.bindClassMethods(methodsToBind, this);
     this.dataStore = new DataStore();
-    this.dataStore.addChangeListener(this.readDataStoreAddJournalEntryToSummary);
+//    this.dataStore.addChangeListener(this.readDataStoreAddJournalEntryToSummary);
     this.header = new Header(this.dataStore);
   }
 
@@ -40,6 +40,7 @@ class ViewAllJournalEntries extends BindingClass {
         console.log("journalEntries: {}", journalEntries);
         this.dataStore.set('journals', journalEntries);
         this.dataStore.set('selectedJournalId', journalEntries[0].id);
+        this.dataStore.addChangeListener(this.readDataStoreAddJournalEntryToSummary);
 //        console.log (journalEntries + "these are suppose to be your journal entries");
         this.dataStore.set('email', identity.email);
       }
@@ -53,22 +54,28 @@ class ViewAllJournalEntries extends BindingClass {
         this.clientLoaded();
         const deleteButton = document.getElementById('delete');
               deleteButton.addEventListener('click', this.deleteEntry);
-        const saveButton = document.getElementById('save');
+        const saveButton = document.getElementById('save-button');
           saveButton.addEventListener('click', this.saveEntry);
        }
 
-   async viewJournal(event) {
-   event.preventDefault();
+    async viewJournal(event) {
+        event.preventDefault();
 //   console.log(event.target.dataset.journalId + "this is where I am wanting to see the WHOLE journal");
-    const journalId = event.target.dataset.journalId;
-    const selectedJournalEntry= this.dataStore.get('journals').find(entry => entry.id === journalId);
-    this.dataStore.set('selectedJournalId', journalId);
-    if (selectedJournalEntry) {
-        const journalEntryFullText = document.getElementById('journal-entry');
-        journalEntryFullText.value = ""; // Clear the current text box
-        journalEntryFullText.value = selectedJournalEntry.content;
+        const journalId = event.target.dataset.journalId;
+        const selectedJournalEntry= this.dataStore.get('journals').find(entry => entry.id === journalId);
+        this.dataStore.set('selectedJournalId', journalId);
+        if (selectedJournalEntry) {
+            const journalEntryFullText = document.getElementById('journal-entry');
+            journalEntryFullText.value = ""; // Clear the current text box
+            journalEntryFullText.value = selectedJournalEntry.content;
+
+            const summaryContainer = document.getElementById('journal-entry-summary');
+                const entryContainers = summaryContainer.getElementsByClassName('journal-entry-button');
+                Array.from(entryContainers).forEach(container => {
+                  container.removeEventListener('click', this.viewJournal);
+                });
         }
-   }
+    }
 
     async readDataStoreAddJournalEntryToSummary() { //made this a very descriptive name about how it is reading
         let journalEntries = this.dataStore.get('journals');
@@ -166,12 +173,15 @@ class ViewAllJournalEntries extends BindingClass {
 
      async saveEntry() {
             const journalEntryContent = document.getElementById('journal-entry').value;
+            const todaysDate = Date.now() /1000;
+            const hashTags = [];
+
             const newEntry = {
                   content: journalEntryContent
                 };
                 try {
                 //call API to save the entry
-                await this.client.saveJournalEntry(newEntry);
+                await this.client.createJournalEntry(journalEntryContent, todaysDate, hashTags);
                 //clear the text field
                 document.getElementById('journal-entry').value = "";
                 //refresh the summary section

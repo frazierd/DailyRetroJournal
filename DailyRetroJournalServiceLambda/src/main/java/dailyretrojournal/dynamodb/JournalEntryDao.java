@@ -67,13 +67,31 @@ public class JournalEntryDao {
         return updateEntry;
     }
 
-    public JournalEntry saveJournalEntry(String content, String dateEntered, List<String> hashtag) {
+    public JournalEntry saveJournalEntry(String content, String dateEntered, List<String> hashtags) {
+        if (content == null || content.isEmpty()) {
+            throw new IllegalArgumentException("Content cannot be null or empty");
+        }
+
+        if (dateEntered == null || dateEntered.isEmpty()) {
+            throw new IllegalArgumentException("Date entered cannot be null or empty");
+        }
+
+        if (hashtags == null) {
+            throw new IllegalArgumentException("Hashtags cannot be null");
+        }
+
         JournalEntry journalEntry = new JournalEntry();
-        journalEntry.setId(String.valueOf(UUID.randomUUID()));
+        journalEntry.setId(UUID.randomUUID().toString());
         journalEntry.setContent(content);
         journalEntry.setDateEntered(dateEntered);
-        journalEntry.setHashtag(hashtag);
-        this.mapper.save(journalEntry);
-        return journalEntry;
+        journalEntry.setHashtag(hashtags);
+
+        try {
+            this.mapper.save(journalEntry);
+            return journalEntry;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

@@ -9,6 +9,7 @@
             <link rel="stylesheet" href="css/foundation.css">
             <link rel="stylesheet" href="css/style.css">
             <link rel="viewAllJournalEntries" href="pages/viewAllJournalEntries.js">
+            <link rel="saveJournalEntry" href="pages/saveJournalEntry.js">
 
             <style>
                 :root{
@@ -27,6 +28,16 @@
             </style>
 
             <script src="assets/viewAllJournalEntries.js"></script>
+            <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var newEntryButton = document.getElementById("new-entry-button");
+            var journalEntryTextarea = document.getElementById("journal-entry");
+
+            newEntryButton.addEventListener("click", function() {
+                journalEntryTextarea.value = ""; // Clear the textarea
+            });
+        });
+    </script>
         </head>
 
     <body>
@@ -54,7 +65,7 @@
                         </div>
                         <textarea id="journal-entry" rows="25" placeholder="Write Your Journal Entry Here"></textarea>
                         <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                            <button class="btn btn-primary me-md-2" id="save" type="button">SAVE</button>
+                            <button class="btn btn-primary me-md-2" id="save-button" type="button">SAVE</button>
                             <button class="btn btn-primary me-md-2" id="update" type="button">UPDATE</button>
                             <button class="btn btn-primary" id="delete" type="button">DELETE</button>
                         </div>
